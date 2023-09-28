@@ -21,15 +21,15 @@ $(document).ready(function () {
     }
   }
 
-  $("#breedDropdown").change(function () {
-    const selectedBreed = $(this).val();
+  $("#breedDropdown").change(function () {  //change is a event that exsicute when there is a change in ui
+    const selectedBreed = $(this).val();//this,val is used to take cuurent value in drop down box
 
     if (selectedBreed) {
       getRandomImageOfDog(selectedBreed);
     }
   });
 
-  function getAllDogsFromApi() {
+  function getAllDogsFromApi() { // this function is used to makes an AJAX GET request to the dog API to retrieve a list of all dog breeds.
     const url = "https://dog.ceo/api/breeds/list/all";
     $.ajax(url, {
       method: "GET",
@@ -48,7 +48,7 @@ $(document).ready(function () {
        });
     
   }
-
+    //The code snippet defines a function called getRandomImageOfDog that takes a dog breed as input and makes an AJAX GET request to the dog API to retrieve a random image of a dog of that breed.
   function getRandomImageOfDog(dogBreed) {
     const url = `https://dog.ceo/api/breed/${dogBreed}/images/random`;
     showLoading(); 
@@ -65,7 +65,7 @@ $(document).ready(function () {
       },
     });
   }
-
+  //every time the image url change the argument is also change and start calling the function
   function displayImage(imageUrl) {
     const imageContainer = $("#imageContainer");
 
