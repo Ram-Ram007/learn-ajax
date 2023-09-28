@@ -1,0 +1,53 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('your-background-image.jpg'); /* Replace 'your-background-image.jpg' with the actual image URL or path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: Fixed background */
+    background-position: center center;
+  }
+  
+  /* Rest of your CSS styles here */
+  
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  #loadingIndicator {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  select {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  #imageContainer {
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  #loadingIndicator{
+    display: none;
+}
