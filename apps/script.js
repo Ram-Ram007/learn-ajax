@@ -1,15 +1,14 @@
 $(document).ready(function () {
-
   const loadingIndicator = $("#loadingIndicator");
 
-    function showLoading() {
+  function showLoading() {
     loadingIndicator.show();
   }
 
   function hideLoading() {
     loadingIndicator.hide();
   }
-                            
+
   function populateDropdown(dogBreeds) {
     const dropdown = $("#breedDropdown");
     dropdown.empty();
@@ -21,51 +20,55 @@ $(document).ready(function () {
     }
   }
 
-  $("#breedDropdown").change(function () {  //change is a event that exsicute when there is a change in ui
-    const selectedBreed = $(this).val();//this,val is used to take cuurent value in drop down box
+  $("#breedDropdown").change(function () {
+    const selectedBreed = $(this).val();
 
     if (selectedBreed) {
       getRandomImageOfDog(selectedBreed);
     }
   });
 
-  function getAllDogsFromApi() { // this function is used to makes an AJAX GET request to the dog API to retrieve a list of all dog breeds.
+  function getAllDogsFromApi() {
     const url = "https://dog.ceo/api/breeds/list/all";
-    $.ajax(url, {
-      method: "GET",
-      success: function (resp) {
+    
+    showLoading();
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
         console.log("API request success");
-        const dogsList = Object.keys(resp.message);
+        const dogsList = Object.keys(data.message);
         console.log(dogsList);
         populateDropdown(dogsList);
-      },
-      error: function () {
+      })
+      .catch((error) => {
         console.log("API request error");
-      },
-      complete: function () {
+      })
+      .finally(() => {
         console.log("API request completed");
-        },
-       });
-    
+        hideLoading();
+      });
   }
-    //The code snippet defines a function called getRandomImageOfDog that takes a dog breed as input and makes an AJAX GET request to the dog API to retrieve a random image of a dog of that breed.
+
   function getRandomImageOfDog(dogBreed) {
     const url = `https://dog.ceo/api/breed/${dogBreed}/images/random`;
-    showLoading(); 
-    $.ajax(url, {
-      method: "GET",
-      success: function (resp) {
+
+    showLoading();
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
         console.log("API request success");
-        console.log(resp);
+        console.log(data);
         hideLoading();
-        displayImage(resp.message);
-      },
-      error: function () {
+        displayImage(data.message);
+      })
+      .catch((error) => {
         console.log("API request error");
-      },
-    });
+        hideLoading();
+      });
   }
-  //every time the image url change the argument is also change and start calling the function
+
   function displayImage(imageUrl) {
     const imageContainer = $("#imageContainer");
 
