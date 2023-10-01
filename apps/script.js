@@ -30,7 +30,7 @@ $(document).ready(function () {
 
   function getAllDogsFromApi() {
     const url = "https://dog.ceo/api/breeds/list/all";
-    
+
     showLoading();
 
     fetch(url)
