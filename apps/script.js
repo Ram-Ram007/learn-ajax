@@ -20,8 +20,8 @@ $(document).ready(function () {
     }
   }
 
-  $("#breedDropdown").change(function () {
-    const selectedBreed = $(this).val();
+  $("#button").click(function () {
+    const selectedBreed = $("#breedDropdown").val();
 
     if (selectedBreed) {
       getRandomImageOfDog(selectedBreed);
@@ -37,7 +37,7 @@ $(document).ready(function () {
       .then((response) => response.json())
       .then((data) => {
         console.log("API request success");
-        const dogsList = Object.keys(data.message);
+        const dogsList = Object.keys(data.message); 
         console.log(dogsList);
         populateDropdown(dogsList);
       })
